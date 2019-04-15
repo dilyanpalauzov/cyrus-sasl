@@ -299,18 +299,16 @@ for tuple in pathset:
         with io.open(rstfile,'r',encoding="utf8") as f:
             for line in f:
                 if line.startswith(':orphan:'):
-                    orphan = 'True';
-                    break;
+                    break
                 if line.startswith('.. author: '):
                     author.append(line[11: len(line.strip())])
-            f.close()
-        if orphan == 'False':
-            man_pages.append(
-                (os.path.splitext(os.path.join(tuple[0],rstfile))[0],
-                os.path.splitext(rstfile)[0],
-                u'Cyrus SASL documentation',
-                author,
-                tuple[1])
+            else:
+                man_pages.append(
+                    (os.path.splitext(os.path.join(tuple[0],rstfile))[0],
+                    os.path.splitext(rstfile)[0],
+                    u'Cyrus SASL documentation',
+                    author,
+                    tuple[1])
                 )
 
     os.chdir(current)
