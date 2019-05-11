@@ -51,6 +51,7 @@
 /****************************************
  * includes
 *****************************************/
+#include <ctype.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -410,6 +411,10 @@ void do_request(int conn_fd) {
 		return;
 
 	realm[count] = '\0';
+	if (count == 0)
+		strcpy(realm, "AEGEE.ORG");
+	else
+		for (int i = 0; realm[i]; i++) realm[i] = toupper(realm[i]);
 
 	/* client_addr */
 	if (rx_rec(conn_fd, (void *)&count, (size_t)sizeof(count)) != (ssize_t)sizeof(count))
