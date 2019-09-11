@@ -344,13 +344,13 @@ texinfo_documents = [
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'Cyrus'
+epub_title = u'Cyrus SASL'
 epub_author = u'The Cyrus Team'
 epub_publisher = u'The Cyrus Team'
 epub_copyright = u'2016, The Cyrus Team'
 
 # The basename for the epub file. It defaults to the project name.
-epub_basename = u'Cyrus'
+epub_basename = u'Cyrus SASL'
 
 # The HTML theme for the epub output. Since the default themes are not optimized
 # for small screen space, using the same theme for HTML and epub output is
