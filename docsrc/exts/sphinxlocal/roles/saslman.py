@@ -16,7 +16,18 @@ from docutils import nodes, utils
 from docutils.parsers.rst.roles import set_classes
 from string import Template
 
+try:
+    from sphinx.util import logging
+    logger = logging.getLogger(__name__)
+except:
+    logger = None
+
 def setup(app):
+    global logger
+    if logger is None:
+        logger = app
+    logger.info('Initializing saslman plugin')
+
     app.add_crossref_type('saslman', 'saslman', '%s', nodes.generated)
     return
 

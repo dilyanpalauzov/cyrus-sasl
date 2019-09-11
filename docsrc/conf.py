@@ -294,19 +294,19 @@ for tuple in pathset:
     except OSError as e:
         continue
     for rstfile in glob.glob("*.rst"):
-        author = [("The Cyrus Team")]
+        authors = [("The Cyrus Team")]
         with io.open(rstfile,'r',encoding="utf8") as f:
             for line in f:
                 if line.startswith(':orphan:'):
                     break
                 if line.startswith('.. author: '):
-                    author.append(line[11: len(line.strip())])
+                    authors.append(line[11: len(line.strip())])
             else:
                 man_pages.append(
                     (os.path.splitext(os.path.join(tuple[0],rstfile))[0],
                     os.path.splitext(rstfile)[0],
                     u'Cyrus SASL documentation',
-                    author,
+                    authors,
                     tuple[1])
                 )
 
