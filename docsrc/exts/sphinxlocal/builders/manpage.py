@@ -31,6 +31,12 @@ from sphinx.builders.manpage import ManualPageBuilder
 # Translater in it.
 from sphinxlocal.writers.manpage import CyrusManualPageWriter
 
+try:
+    from sphinx.util import logging
+    logger = logging.getLogger(__name__)
+except:
+    logger = None
+
 class CyrusManualPageBuilder(ManualPageBuilder):
     """
     Builds groff output in manual page format.
@@ -43,8 +49,11 @@ class CyrusManualPageBuilder(ManualPageBuilder):
     #settings_defaults = {}
 
     def init(self):
+        global logger
+        if logger is None:
+            logger = self
         if not self.config.man_pages:
-            self.warn('no "man_pages" config value found; no manual pages '
+            warn.warn('no "man_pages" config value found; no manual pages '
                       'will be written')
 
     def write(self, *ignored):

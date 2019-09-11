@@ -12,6 +12,7 @@
     :license: BSD, see LICENSE for details.
 """
 
+import docutils
 from docutils import nodes
 from time import strftime
 
@@ -19,6 +20,10 @@ from sphinx.writers.manpage import (
     ManualPageWriter,
     ManualPageTranslator as BaseTranslator
 )
+
+docutils_version_info = tuple(map(int, docutils.__version__.split('.')))
+if docutils_version_info < (0, 11):
+    from sphinx.writers.manpage import MACRO_DEF
 
 
 from sphinx import addnodes
