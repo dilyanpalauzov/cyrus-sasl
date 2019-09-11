@@ -388,7 +388,7 @@ epub_exclude_files = ['search.html']
 #epub_tocdepth = 3
 
 # Allow duplicate toc entries.
-#epub_tocdup = True
+epub_tocdup = False
 
 # Choose between 'default' and 'includehidden'.
 #epub_tocscope = 'default'
