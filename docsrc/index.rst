@@ -55,7 +55,6 @@ of libraries correct.
         :maxdepth: 1
         :caption: Overview
 
-        getsasl
         sasl/quickstart
         sasl/installation
         Contact Us <contribute>
