@@ -293,14 +293,8 @@ for tuple in pathset:
     except OSError as e:
         continue
     for rstfile in glob.glob("*.rst"):
-        authors = ["The Cyrus SASL Team"]
-        orphan = False
-        with io.open(rstfile, 'r', encoding="utf8") as f:
-            for line in f:
-                if line.startswith(':orphan:'):
-                    orphan = True
-                    break
-                if line.startswith('.. author: '):
+        author = "The Cyrus Team"
+        with io.open(rstfile,'r',encoding="utf8") as f:
                     authors.append(line[len('.. author: '):].strip())
         if not orphan:
             man_pages.append(
