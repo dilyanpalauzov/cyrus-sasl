@@ -148,7 +148,7 @@ Plugins: Auxiliary Property
 
 Auxiliary Property (or auxprop) plugins provide a database service for the
 glue layer (and through it, to the mechanisms and application).  Cyrus SASL
-ships with two auxprop plugins: SASLdb and SQL.  Though they can be use
+ships with two auxprop plugins: SASLdb and SQL.  Though they can be used
 in much more generic ways, auxprop plugins are mostly only used by
 shared secret mechanisms (or by the auxprop password verify) to access the
 ``userPassword`` attribute.  This provides a plaintext copy of the
