@@ -17,7 +17,7 @@ NOT free anything handed to it by the SASL library, such as responses
 given by sasl_client_step or sasl_decode.
 
 
-Tips for both clients and servers
+Tips for both Clients and Servers
 =================================
 
 * Change configure scripts to search for libsasl2 and include files
@@ -58,7 +58,7 @@ Tips for both clients and servers
   that much at a time to the SASL library!
 
 
-Tips for clients
+Tips for Clients
 ================
 
 * In ``sasl_client_new`` you can now pass ip address strings as
