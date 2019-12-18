@@ -166,7 +166,7 @@ int main(int argc, char **argv) {
 	/* default flags */
 	flags |= USE_ACCEPT_LOCK;
 	flags |= DETACH_TTY;
-	flags |= LOG_USE_SYSLOG;
+	//flags |= LOG_USE_SYSLOG;
 	flags |= LOG_USE_STDERR;
 	flags |= AM_MASTER;
 
