@@ -79,15 +79,13 @@ static int test_getopt(void *context __attribute__((unused)),
     return SASL_FAIL;
 }
 
-int main(int argc, char *argv[])
+int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 {
     sasl_callback_t callbacks[3] = {};
     char buf[8192];
     sasl_conn_t *conn;
     const char *data;
     unsigned int len;
-    sasl_channel_binding_t cb = {0};
-    unsigned char cb_buf[256];
     int sd;
     int c, r;
     const char *sasl_mech = "GSSAPI";
@@ -95,9 +93,6 @@ int main(int argc, char *argv[])
 
     while ((c = getopt(argc, argv, "c:P:")) != EOF) {
         switch (c) {
-        case 'c':
-            parse_cb(&cb, cb_buf, 256, optarg);
-            break;
         case 'P':
             plain = 1;
             sasldb_path = optarg;
@@ -126,10 +121,6 @@ int main(int argc, char *argv[])
     if (r != SASL_OK) {
         saslerr(r, "allocating connection state");
         exit(-1);
-    }
-
-    if (cb.name) {
-        sasl_setprop(conn, SASL_CHANNEL_BINDING, &cb);
     }
 
     if (plain) {

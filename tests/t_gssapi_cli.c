@@ -14,7 +14,6 @@
 
 #include <arpa/inet.h>
 #include <saslplug.h>
-#include <saslutil.h>
 
 const char *testpass = NULL;
 
@@ -87,7 +86,7 @@ static int get_pass(sasl_conn_t *conn __attribute__((unused)),
     return SASL_OK;
 }
 
-int main(int argc, char *argv[])
+int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 {
     sasl_callback_t callbacks[4] = {};
     char buf[8192];
@@ -95,8 +94,6 @@ int main(int argc, char *argv[])
     sasl_conn_t *conn;
     const char *data;
     unsigned int len;
-    sasl_channel_binding_t cb = {0};
-    char cb_buf[256];
     int sd;
     int c, r;
     const char *sasl_mech = "GSSAPI";
@@ -104,9 +101,6 @@ int main(int argc, char *argv[])
 
     while ((c = getopt(argc, argv, "c:P:")) != EOF) {
         switch (c) {
-        case 'c':
-            parse_cb(&cb, cb_buf, 256, optarg);
-            break;
         case 'P':
             plain = 1;
             testpass = optarg;
@@ -147,10 +141,6 @@ int main(int argc, char *argv[])
     if (r != SASL_OK) {
         saslerr(r, "allocating connection state");
         exit(-1);
-    }
-
-    if (cb.name) {
-        sasl_setprop(conn, SASL_CHANNEL_BINDING, &cb);
     }
 
     r = sasl_client_start(conn, sasl_mech, NULL, &data, &len, &chosenmech);
