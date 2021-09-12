@@ -279,7 +279,7 @@ int _sasl_canon_user_lookup (sasl_conn_t *conn,
 			       ulen,
 			       flags,
 			       oparams);
-    if (result == SASL_OK && !(flags & SASL_CU_AUTHZID)) {
+    if (result == SASL_OK) {
 	result = _sasl_auxprop_lookup_user_props (conn,
 						  flags,
 						  oparams);
